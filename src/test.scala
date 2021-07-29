@@ -56,7 +56,16 @@ object Hofs extends App {
   /**********************************/
 
   //FlatMap
+  val result = Numbers.flatMap{x => List(x,x+1)}
+  println(result)
 
 
+
+  def flatMap(list: List[Int])(f: Int => List[Int]): List[Int] =
+    list match {
+
+      case Nil => Nil
+      case head :: tail => list(head) ::: flatMap(tail,f)
+    }
 }
 
