@@ -59,13 +59,15 @@ object Hofs extends App {
   val result = Numbers.flatMap{x => List(x,x+1)}
   println(result)
 
-
-
-  def flatMap(list: List[Int])(f: Int => List[Int]): List[Int] =
+  def flatMap(list: List[Int],f: Int => List[Int]): List[Int] =
     list match {
-
       case Nil => Nil
-      case head :: tail => list(head) ::: flatMap(tail,f)
+      case head :: tail => f(head) ++ flatMap(tail,f)
     }
+  println(flatMap(Numbers, x => List(x,x+1)))
+
+  /**********************************/
+
+
 }
 
