@@ -25,12 +25,13 @@
       val length: Int = key.length
       var index: Int = 0
       var pCrawl: TrieNode = root
-      level = 0
+
       while (level < length) {
         index = key.charAt(level) - 'a'
         if (pCrawl.children(index) == null)
           pCrawl.children(index) = new TrieNode()
-        pCrawl = pCrawl.children(index) { level += 1; level - 1 }
+        pCrawl = pCrawl.children(index)
+        level += 1
       }
       // mark last node as leaf
       pCrawl.isEndOfWord = true
@@ -46,7 +47,8 @@
       while (level < length) {
         index = key.charAt(level) - 'a'
         if (pCrawl.children(index) == null) false
-        pCrawl = pCrawl.children(index) { level += 1; level - 1 }
+        pCrawl = pCrawl.children(index)
+        level += 1;
       }
       (pCrawl.isEndOfWord)
     }
@@ -59,7 +61,10 @@
       root = new TrieNode()
       var i: Int = 0
       i = 0
-      while (i < keys.length) { insert(keys(i)) { i += 1; i - 1 } }
+      while (i < keys.length) {
+        insert(keys(i))
+        i+=1
+      }
       // Search for different keys
       if (search("the") == true) println("the --- " + output(1))
       else println("the --- " + output(0))
