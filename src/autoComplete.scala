@@ -57,7 +57,6 @@
         Array("the", "a", "there", "answer", "any", "by", "bye", "their")
       val output: Array[String] = Array("Not present in trie", "Present in trie")
       root = new TrieNode()
-      // Construct trie
       var i: Int = 0
       i = 0
       while (i < keys.length) { insert(keys(i)) { i += 1; i - 1 } }
