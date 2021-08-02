@@ -27,7 +27,7 @@
       var pCrawl: TrieNode = root
 
       while (level < length) {
-        index = key.charAt(level) - 'a'
+        index = key.charAt(level)
         if (pCrawl.children(index) == null)
           pCrawl.children(index) = new TrieNode()
         pCrawl = pCrawl.children(index)
@@ -45,7 +45,8 @@
       var pCrawl: TrieNode = root
       level = 0
       while (level < length) {
-        index = key.charAt(level) - 'a'
+        index = key.charAt(level)
+
         if (pCrawl.children(index) == null) false
         pCrawl = pCrawl.children(index)
         level += 1;
